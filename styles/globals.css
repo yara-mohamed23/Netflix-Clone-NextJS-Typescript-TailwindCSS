@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './scrollbar.css';
+
+/* html, body, header */
+
+@layer base {
+    body {
+        @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
+    }
+    header {
+        @apply fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all
+    }
+}
+
+
+/* custom className  */
+
+@layer components {
+    .headerLink {
+        @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s]
+    }
+}
+
+.bannerButton {
+    @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition;
+}
