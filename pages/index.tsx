@@ -4,6 +4,11 @@ import Banner from '../components/Banner'
 import requests from '../utils/requests'
 import { Movie } from '../typings'
 import Row from '../components/Row'
+import useAuth from '../hooks/useAuth'
+import { useRecoilValue } from 'recoil'
+import { useState } from 'react'
+import Modal from '../components/Modal'
+import { modalState } from '../atoms/modalAtom'
 //The interface "Props" is being used to define the expected shape of the object that is being passed as props to the "Home" component.
 interface Props {
   netflixOriginals: Movie[]
@@ -27,6 +32,11 @@ const Home = ({
   //It's saying that the component expects to receive an object as a prop, and that object should conform to the shape defined in the Props interface.
   //The : Props is a type annotation that specifies the expected type of the props.
  }: Props) => {
+  const {loading} = useAuth()
+  const showModal = useRecoilValue(modalState)
+  //const [showModal, setShowModal] = useState(false)
+
+  if(loading) return null
   return (
     <div className='relative h-screen bg-gradient-to-b lg:h-[140vh]'>
       <Head>
@@ -49,6 +59,9 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {/* Modal */}
+      {showModal && <Modal />}
+
     </div>
   )
 }

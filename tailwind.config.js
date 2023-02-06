@@ -16,4 +16,7 @@ module.exports = {
         require('tailwindcss-textshadow'),
         require('tailwind-scrollbar'),
     ],
+    images: {
+        domains: ['www.google.com'],
+    },
 }
